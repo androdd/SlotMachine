@@ -2,12 +2,12 @@
 
 internal class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
         IConfigurationManager configurationManager = new ConfigurationManager();
-        Wallet wallet = new Wallet();
-        ReelsSet reelsSet = new ReelsSet(configurationManager);
-        WinCalculator winCalculator = new WinCalculator(configurationManager);
+        Wallet wallet = new();
+        ReelsSet reelsSet = new(configurationManager);
+        WinCalculator winCalculator = new(configurationManager);
 
         reelsSet.Init();
 
@@ -21,36 +21,44 @@ internal class Program
 
         wallet.Deposit(deposit);
 
-        Console.WriteLine("Enter stake amount:");
-        var stakeString = Console.ReadLine();
-        if (!float.TryParse(stakeString, out float stake) || stake <= 0 || stake > wallet.Balance)
+        while (wallet.Balance > 0)
         {
-            Console.WriteLine("Invalid stake. Try again later.");
-            return;
-        }
-        
-        wallet.Withdraw(stake);
-
-        Console.WriteLine();
-
-        var reels = reelsSet.Spin();
-
-        for (int r = 0; r < MachineConstants.ReelsCount; r++)
-        {
-            for (int s = 0; s < MachineConstants.SymbolsPerReel; s++)
+            Console.WriteLine("Enter stake amount:");
+            var stakeString = Console.ReadLine();
+            if (!float.TryParse(stakeString, out float stake) || stake <= 0 || stake > wallet.Balance)
             {
-                Console.Write(reels[s, r]);
+                Console.WriteLine("Invalid stake. Try again later.");
+                return;
             }
 
+            wallet.Withdraw(stake);
+
             Console.WriteLine();
+
+            var reels = reelsSet.Spin();
+
+            for (int r = 0; r < MachineConstants.ReelsCount; r++)
+            {
+                for (int s = 0; s < MachineConstants.SymbolsPerReel; s++)
+                {
+                    Console.Write(reels[s, r]);
+                }
+
+                Console.WriteLine();
+            }
+
+            var win = winCalculator.GetAmount(reels, stake);
+            wallet.Deposit(win);
+
+            Console.WriteLine();
+            Console.WriteLine($"You have won: {win:F}");
+            Console.WriteLine($"Current balance is: {wallet.Balance:F}");
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key for next stake...");
+            Console.ReadKey();
+            Console.Clear();
         }
-
-        var win = winCalculator.GetAmount(reels, stake);
-        wallet.Deposit(win);
-
-        Console.WriteLine();
-        Console.WriteLine($"You have won: {win:F}");
-        Console.WriteLine($"Current balance is: {wallet.Balance:F}");
     }
 }
 
