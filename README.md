@@ -14,11 +14,12 @@ After the first spin the total balance will be equal to:
 ## The game:
 - A slot game with dimensions 4 rows of 3 symbols each.
 - Supports following symbols:
-                Symbol Coefficient Probability to appear on a cell
-     Apple        (A​)      0.4         45%
-     Banana       (B​)      0.6         35%
-     Pineapple    (P​)      0.8         15%
-     Wildcard     (*​)      0           5%
+     |           | Symbol | Coefficient | Probability to appear on a cell |
+     |-----------|--------|-------------|---------------------------------|
+     | Apple     |   (A​)  |     0.4     |     45%                         |
+     | Banana    |   (B​)  |     0.6     |     35%                         |
+     | Pineapple |   (P​)  |     0.8     |     15%                         |
+     | Wildcard  |   (*​)  |     0       |     5%                          |
 
 - The symbols are placed randomly respecting the probability of each item. For example:
 there is 5% chance that a Wildcard will be placed in a cell and there is 45% chance for
