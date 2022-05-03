@@ -1,4 +1,4 @@
-﻿namespace Bede.SlotMachine.ConsoleUi;
+﻿namespace Bede.SlotMachine.Common.Exceptions;
 
 public class RandomSymbolException : Exception
 {

@@ -1,6 +1,11 @@
-﻿namespace Bede.SlotMachine.ConsoleUi;
+﻿namespace Bede.SlotMachine.Services;
 
-public class ReelsSet
+using Bede.SlotMachine.Common;
+using Bede.SlotMachine.Common.Exceptions;
+using Bede.SlotMachine.Common.Extensions;
+using Bede.SlotMachine.Common.Interfaces;
+
+public class ReelsSet : IReelsSet
 {
     private readonly IConfigurationManager _configurationManager;
 
@@ -10,6 +15,8 @@ public class ReelsSet
 
     public ReelsSet(IConfigurationManager configurationManager)
     {
+        configurationManager.NotNullArgument(nameof(configurationManager));
+
         _configurationManager = configurationManager;
 
         //TODO: Use cryptographic random number generator

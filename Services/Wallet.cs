@@ -1,6 +1,8 @@
-﻿namespace Bede.SlotMachine.ConsoleUi;
+﻿namespace Bede.SlotMachine.Services;
 
-public class Wallet
+using Bede.SlotMachine.Common.Interfaces;
+
+public class Wallet : IWallet
 {
     public float Balance { get; private set; }
 

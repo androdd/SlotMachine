@@ -1,13 +1,19 @@
-﻿namespace Bede.SlotMachine.ConsoleUi;
+﻿namespace Bede.SlotMachine.Services;
 
 using System.Collections.ObjectModel;
 
-public class WinCalculator
+using Bede.SlotMachine.Common;
+using Bede.SlotMachine.Common.Extensions;
+using Bede.SlotMachine.Common.Interfaces;
+
+public class WinCalculator : IWinCalculator
 {
     private readonly IConfigurationManager _configurationManager;
 
     public WinCalculator(IConfigurationManager configurationManager)
     {
+        configurationManager.NotNullArgument(nameof(configurationManager));
+
         _configurationManager = configurationManager;
     }
 

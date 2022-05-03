@@ -1,6 +1,8 @@
-﻿namespace Bede.SlotMachine.ConsoleUi;
+﻿namespace Bede.SlotMachine.Services;
 
 using System.Collections.ObjectModel;
+
+using Bede.SlotMachine.Common.Interfaces;
 
 public class ConfigurationManager : IConfigurationManager
 {

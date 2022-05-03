@@ -1,4 +1,4 @@
-﻿namespace Bede.SlotMachine.ConsoleUi;
+﻿namespace Bede.SlotMachine.Common.Interfaces;
 
 using System.Collections.ObjectModel;
 

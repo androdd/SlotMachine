@@ -1,4 +1,4 @@
-﻿namespace Bede.SlotMachine.ConsoleUi;
+﻿namespace Bede.SlotMachine.Common;
 
 public static class MachineConstants
 {
